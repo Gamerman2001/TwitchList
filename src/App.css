@@ -1,3 +1,11 @@
+.link {
+  color: #fff
+}
+.link:hover {
+  color: #fff
+}
+
+
 .App {
   text-align: center;
 }
