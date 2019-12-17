@@ -24,16 +24,16 @@ export default function Games() {
   }, []);
   return (
     <div >
-      <h1> Popular Games</h1>
+      <h1 className='text-center'> Popular Games</h1>
       <div className='row'>
         {games.map(game => (
             
           <div  key={game.id} className="col-4">
-              <div className='card'>
-                <img className='card-img-top' src={game.box_art_url}  />
-                <div className='card-body'>
+              <div className='card mt-5'>
+                <img className='card-img-top' src={game.box_art_url} alt={game.name} />
+                <div className='card-body text-center'>
                     <h5 className='card-title'>{game.name}</h5>
-                    <button className='btn btn-success'>
+                    <button className='btn btn-success '>
                         <Link 
                         className='link' 
                         to={{
