@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import {Link} from 'react-router-dom'
 import api from "../Api";
 
 export default function Streams() {
@@ -27,8 +26,8 @@ export default function Streams() {
           }
         });
         let newURL = stream.thumbnail_url
-          .replace("width", "300")
-          .replace("height", "300");
+          .replace("{width}", "300")
+          .replace("{height}", "300");
         stream.thumbnail_url = newURL;
         return stream;
       });
@@ -41,7 +40,6 @@ export default function Streams() {
     <div>
       <h1 className="text-center"> Top Streams</h1>
       <div className="row">
-          {console.log(channels)}
         {channels.map(game => (
           <div key={game.id} className="col-lg-4 col-md-6 col-sm-12 mt-5">
             <div className="card">
@@ -58,7 +56,7 @@ export default function Streams() {
                 </div>
                 <button className="btn btn-success ">
                   <a href={"https://twitch.tv/" + game.user_name}>
-                      watch {game.user_name}
+                      watch {game.user_name}'s channel
                   </a>
                 </button>
               </div>
