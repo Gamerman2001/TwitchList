@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import {Link} from 'react-router-dom'
 import api from "../Api";
 
 export default function Streams() {
@@ -39,29 +39,30 @@ export default function Streams() {
 
   return (
     <div>
-      <h1 className="text-center"> Popular Games</h1>
+      <h1 className="text-center"> Top Streams</h1>
       <div className="row">
+          {console.log(channels)}
         {channels.map(game => (
-          <div key={game.id} className="col-4">
+          <div key={game.id} className="col-lg-4">
             <div className="card mt-5">
               <img
                 className="card-img-top"
-                src={game.box_art_url}
-                alt={game.name}
+                src={game.thumbnail_url}
+                alt={game.gameName}
               />
               <div className="card-body text-center">
-                <h5 className="card-title">{game.name}</h5>
+                <h5 className="card-title">{game.gameName}</h5>
                 <button className="btn btn-success ">
                   <Link
                     className="link"
                     to={{
-                      pathname: "game/" + game.name,
+                      pathname: "game/" + game.gameName,
                       state: {
                         gameID: game.id
                       }
                     }}
                   >
-                    {game.name} streams{" "}
+                    {game.name} streams
                   </Link>
                 </button>
               </div>
