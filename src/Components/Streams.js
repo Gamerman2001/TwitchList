@@ -51,19 +51,15 @@ export default function Streams() {
                 alt={game.gameName}
               />
               <div className="card-body text-center">
-                <h5 className="card-title">{game.gameName}</h5>
+                <h5 className="card-title">{game.user_name}</h5>
+                <h5 className="card-text">{game.gameName}</h5>
+                <div className="card-text">
+                    {game.viewer_count} live viewers
+                </div>
                 <button className="btn btn-success ">
-                  <Link
-                    className="link"
-                    to={{
-                      pathname: "game/" + game.gameName,
-                      state: {
-                        gameID: game.id
-                      }
-                    }}
-                  >
-                    {game.gamename} streams
-                  </Link>
+                  <a href={"https://twitch.tv/" + game.user_name}>
+                      watch {game.user_name}
+                  </a>
                 </button>
               </div>
             </div>
