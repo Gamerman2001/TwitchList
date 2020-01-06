@@ -43,8 +43,8 @@ export default function Streams() {
       <div className="row">
           {console.log(channels)}
         {channels.map(game => (
-          <div key={game.id} className="col-lg-4">
-            <div className="card mt-5">
+          <div key={game.id} className="col-lg-4 col-md-6 col-sm-12 mt-5">
+            <div className="card">
               <img
                 className="card-img-top"
                 src={game.thumbnail_url}
@@ -62,7 +62,7 @@ export default function Streams() {
                       }
                     }}
                   >
-                    {game.name} streams
+                    {game.gamename} streams
                   </Link>
                 </button>
               </div>
