@@ -4,7 +4,6 @@ import api from "../Api";
 export default function GameStreams({match, location}) {
   const [streamData, setStreamData] = useState([])
   const [viewers, setViewers] = useState(0)
-  const [greeting, setGreeting] = useState('Good Day')
 
   useEffect(()=> {
     const fetchData = async () => {
@@ -17,7 +16,6 @@ export default function GameStreams({match, location}) {
           stream.thumbnail_url = newURL
           return stream
         })
-        console.log(finalArray)
         let totalViews = finalArray.reduce((acc, val)=> {
           return(acc + val.viewer_count)
         }, 0)
@@ -26,7 +24,7 @@ export default function GameStreams({match, location}) {
         setStreamData(finalArray)
     }
     fetchData()
-  },[])
+  },[location.state.gameID])
   return <div>
 
     <h1 className='text-center'>{match.params.id}</h1>
@@ -37,7 +35,7 @@ export default function GameStreams({match, location}) {
       {streamData.map((stream)=> {
         return <div key={stream.user_name} className='col-lg-4 col-md-6 col-sm-12 mt-5'>
           <div className='card'>
-              <img className='card-img-top' src={stream.thumbnail_url} />
+              <img className='card-img-top' src={stream.thumbnail_url} alt={stream.gameName} />
               <div className='card-body'>
                   <h5 className='card-title'>{stream.user_name}</h5>
                   <div className='card-text'>
@@ -48,6 +46,7 @@ export default function GameStreams({match, location}) {
                       className='link'
                       href={'https://twitch.tv/' + stream.user_name}
                       target='_blank'
+                      rel='noopener noreferrer'
                       > Watch {stream.user_name}'s channel</a>
                     </button>
               </div>
